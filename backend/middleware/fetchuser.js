@@ -1,3 +1,5 @@
+//work of this middleware is to extract id from auth-token
+
 var jwt = require('jsonwebtoken');
 const JWT_SECRET="ManhaDoesn'tWorkButSleeps";
 
@@ -10,8 +12,10 @@ const fetchuser = (req,res,next)=>{
     try {
         //getting id
         const data = jwt.verify(token,JWT_SECRET);
+        // data contains
+        //{ user: { id: '63a467ea6123ad6166eab258' }, iat: 1671739308 }
         req.user=data.user; 
-        //passing control to async(req,res) of route3 of auth.js
+        //passing control to async(req,res) of route 3 of auth.js
         next();
     } catch (error) {
         res.status(401).send({error:"Please authenticate using valid token"});

@@ -79,7 +79,7 @@ async(req,res)=>{
     //check password
     if(password!==user.password)
     {
-      return res.status(400).json({error:"2Try again with correct credentials"})
+      return res.status(400).json({error:"Try again with correct credentials"})
     }
       const data = {
       user:{
@@ -95,11 +95,13 @@ async(req,res)=>{
     }
 })
 
-//Route 3:fetch a user using:POST "/api/auth/fetch" :doesn't require login
+//Route 3:fetch a user using:POST "/api/auth/fetch" :require login
 router.post('/fetch',fetchuser,
 async(req,res)=>{
     try{
       const userId=req.user.id;
+      //req.user contains
+      //{ id: '63a467ea6123ad6166eab258' }
     const user = await User.findById(userId).select("-password")
     res.send(user);
     }
