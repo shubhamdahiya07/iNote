@@ -8,7 +8,6 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import NoteState from './contexts/notes/NoteState';
-// import NoteContext from './contexts/notes/NoteContext';
 
 function App() {
   return (
