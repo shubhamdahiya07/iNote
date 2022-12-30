@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 const JWT_SECRET="ManhaDoesn'tWorkButSleeps";
 const fetchuser=require('../middleware/fetchuser');
 
+let success = false;
 
 //Route 1:create a user using:POST "/api/auth/createuser" :doesn't require login
 router.post('/createuser',
@@ -43,7 +44,8 @@ async(req,res)=>{
       }
     }
     let authToken=jwt.sign(data, JWT_SECRET);
-    res.json({authToken});
+    success = true;
+    res.json({success,authToken});
     }
     catch(error){
         console.error(error.message);
@@ -87,7 +89,8 @@ async(req,res)=>{
       }
     }
     let authToken=jwt.sign(data, JWT_SECRET);
-    res.json({authToken});
+    success=true;
+    res.json({success,authToken});
     }
     catch(error){
         console.error(error.message);
@@ -103,7 +106,8 @@ async(req,res)=>{
       //req.user contains
       //{ id: '63a467ea6123ad6166eab258' }
     const user = await User.findById(userId).select("-password")
-    res.send(user);
+    success = true;
+    res.send(success,user);
     }
     catch(error){
         console.error(error.message);
