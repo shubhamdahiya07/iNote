@@ -11,7 +11,7 @@ const AddNote = () => {
 
     const handleClick = (e) =>{
             e.preventDefault();
-            addnote(note.title,note.description,note.tag);
+            addnote(note.title,note.Description,note.tag);
             setNote({ title: "", Description: "", tag: "" ,_id:""});
 
     }

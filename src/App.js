@@ -11,13 +11,14 @@ import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import NoteState from './contexts/notes/NoteState';
+
 function App() {
   return (
     <>
       <NoteState>
         <BrowserRouter>
           <Navbar />
-          <Alert message={"amazing"}/>
+          <Alert/>
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />} />

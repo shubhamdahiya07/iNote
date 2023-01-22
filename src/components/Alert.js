@@ -1,12 +1,14 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import NoteContext from '../contexts/notes/NoteContext';
 const Alert = (props) => {
-const {message}=props;
+    let context = useContext(NoteContext);
+const {message} = context;
     return (
+        
         <div>
-            <div className="alert alert-primary" role="alert">
+            {(message!==null)&&<div className="my-5 alert alert-primary" role="alert">
                     {message}
-            </div>
+            </div>}
         </div>
     )
 }
